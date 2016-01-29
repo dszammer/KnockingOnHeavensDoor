@@ -1,0 +1,4 @@
+*.mdb
+KoHD-UnityProject/Library/*
+*.backup
+KoHD-UnityProject/Temp/*
