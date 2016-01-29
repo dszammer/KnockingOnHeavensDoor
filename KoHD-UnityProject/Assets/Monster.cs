@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Monster : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class Monster : MonoBehaviour {
     [SerializeField]
     private int speed = 5;
 
-
+    private Vector3 nextWaypoint;
 
     
     // Use this for initialization
@@ -18,6 +19,17 @@ public class Monster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
+        MoveToNextWaypoint();
 	}
+
+    private void MoveToNextWaypoint()
+    {
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+    }
+
 }
