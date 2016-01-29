@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/test1.unity
+- path: Assets/scenes/testWaypoint.unity
   isLoaded: 1
   isActive: 1
