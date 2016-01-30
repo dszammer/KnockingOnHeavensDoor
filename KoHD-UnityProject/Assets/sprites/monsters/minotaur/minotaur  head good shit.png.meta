@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 32ada3c6e22c0434fb9fa64a8315595f
-timeCreated: 1454182454
+timeCreated: 1454186758
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: minotaur  head good shit_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,26 +31,73 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: minotaur  head good shit_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 35
+        width: 221
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55.5, y: 95}
+        - {x: -97.5, y: 95}
+        - {x: -97.5, y: -44}
+        - {x: -44.5, y: -99}
+        - {x: 51.5, y: -99}
+        - {x: 110.5, y: -70}
+        - {x: 110.5, y: 23}
+        - {x: 90.5, y: 83}
+      - - {x: -110.5, y: -32}
+        - {x: -109.5, y: -32}
+        - {x: -106.5, y: -29}
+        - {x: -107.5, y: -26}
+        - {x: -110.5, y: -26}
+      - - {x: -74.5, y: -15}
+        - {x: -74.5, y: -16}
+        - {x: -71.5, y: -19}
+        - {x: -68.5, y: -18}
+        - {x: -68.5, y: -15}
+        - {x: -70.5, y: -13}
+        - {x: -72.5, y: -13}
+      - - {x: -11.5, y: 94}
+        - {x: -10.5, y: 91}
+        - {x: -7.5, y: 91}
+        - {x: -5.5, y: 93}
+        - {x: -6.5, y: 96}
+        - {x: -9.5, y: 96}
+      - - {x: -3.5, y: 99}
+        - {x: -2.5, y: 96}
+        - {x: 0.5, y: 96}
+        - {x: 2.5, y: 98}
+        - {x: 2.5, y: 99}
+      - - {x: 55.5, y: 99}
+        - {x: 56.5, y: 96}
+        - {x: 59.5, y: 96}
+        - {x: 61.5, y: 98}
+        - {x: 61.5, y: 99}
     outline: []
   spritePackingTag: 
   userData: 

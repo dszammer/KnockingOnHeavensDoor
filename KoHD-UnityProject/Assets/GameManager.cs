@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
 
 	public void MonsterFinished(){
 		monstersInGoal++;
-		if (monstersInGoal >= monstersInGoal) {
+		if (monstersInGoal >= monsterToWin) {
 			SceneManager.LoadScene ("winScreen");
 		}
 	}
