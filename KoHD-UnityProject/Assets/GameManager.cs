@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	public void MonsterFinished(){
 		monstersInGoal++;
 		if (monstersInGoal >= monstersInGoal) {
-			//TODO: load winning screen Scene
+			SceneManager.LoadScene ("winScreen");
 		}
 	}
 
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		levelTimePassed += Time.deltaTime;
 		if (levelTimePassed >= levelTimeLimitSeconds) {
-			
+			SceneManager.LoadScene ("loseScreen");
 		}
 	}
 }
