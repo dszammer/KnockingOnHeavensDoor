@@ -2,3 +2,6 @@
 KoHD-UnityProject/Library/*
 *.backup
 KoHD-UnityProject/Temp/*
+KoHD-UnityProject/.vs/KoHD-UnityProject/v14/.suo
+KoHD-UnityProject/KoHD-UnityProject.CSharp.Plugins.csproj
+KoHD-UnityProject/ProjectSettings/QualitySettings.asset

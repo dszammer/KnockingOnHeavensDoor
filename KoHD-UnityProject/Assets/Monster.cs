@@ -11,18 +11,21 @@ public class Monster : MonoBehaviour {
 
     private Transform nextWaypoint;
     private GameObject[] WaypointsArray;
-    
-
+    private Animator anim;
+    private bool moving = true;
     // Use this for initialization
     void Start () {
 
         WaypointsArray = WaypointManager.Instance.GetWaypoints();
 
         nextWaypoint = WaypointsArray[0].transform;
+
+        anim = gameObject.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        //StartCoroutine(KillOnAnimationEnd());
         MoveToNextWaypoint();
 	}
 
@@ -31,16 +34,38 @@ public class Monster : MonoBehaviour {
         Vector3 actualPos = gameObject.transform.position;
         Vector3 destinationPos = nextWaypoint.position;
 
-        actualPos += (destinationPos - actualPos).normalized * speed * Time.deltaTime;
+        if (moving)
+        {
+            actualPos += (destinationPos - actualPos).normalized * speed * Time.deltaTime;
+
+            gameObject.transform.position = actualPos;
+        }
+    }
+
+    private IEnumerator KillOnAnimationEnd()
+    {
+        yield return new WaitForSeconds(0.167f);
         
-        gameObject.transform.position = actualPos;
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.Equals(nextWaypoint.gameObject))
         {
-            SetNextWaypoint();
+            anim.SetTrigger("MonsterHit");
+            if (!DealDamage(500))
+            {
+                moving = false;
+                anim.SetBool("MonsterDeath", true);
+                
+                Debug.Log(gameObject.GetComponent<Animation>().GetClipCount());
+                //StartCoroutine(KillOnAnimationEnd());
+            }
+            else
+            {
+                SetNextWaypoint();
+            }
         }
     }
 
@@ -54,6 +79,16 @@ public class Monster : MonoBehaviour {
         {
             nextWaypoint = WaypointsArray[nextWaypoint.GetSiblingIndex() + 1].transform;
         }
+    }
+
+    public bool DealDamage(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            return false;
+        }
+        return true;
     }
 
 }
