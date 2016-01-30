@@ -13,7 +13,9 @@ public class Monster : MonoBehaviour {
     private GameObject[] WaypointsArray;
     private Animator anim;
     private bool moving = true;
-    private bool flipcd = false;
+    [SerializeField]
+    private AudioClip deathAudio;
+
     // Use this for initialization
     void Start () {
 
@@ -45,6 +47,7 @@ public class Monster : MonoBehaviour {
 
     private IEnumerator KillOnAnimationEnd()
     {
+        GetComponent<AudioSource>().clip = deathAudio;
         yield return new WaitForSeconds(1.25f);
         
         Destroy(gameObject);
@@ -54,9 +57,19 @@ public class Monster : MonoBehaviour {
     {
         if (other.gameObject.Equals(nextWaypoint.gameObject))
         {
- 
-            SetNextWaypoint();
-          
+            anim.SetTrigger("MonsterHit");
+            if (!DealDamage(500))
+            {
+                moving = false;
+                anim.SetBool("MonsterDeath", true);
+                Debug.Log(anim.GetCurrentAnimatorClipInfo(0).Length);
+                
+                StartCoroutine(KillOnAnimationEnd());
+            }
+            else
+            {
+                SetNextWaypoint();
+            }
         }
     }
 
@@ -74,37 +87,12 @@ public class Monster : MonoBehaviour {
 
     public bool DealDamage(int damage)
     {
-        anim.SetTrigger("MonsterHit");
         health -= damage;
         if(health <= 0)
         {
-            moving = false;
-
-            Debug.Log(anim.GetCurrentAnimatorClipInfo(0).Length);
-
-            StartCoroutine(KillOnAnimationEnd());
-            anim.SetBool("MonsterDeath", true);
             return false;
         }
         return true;
     }
-
-    public void Flipme()
-    {   
-        if (!flipcd)
-        {
-            flipcd = true;
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            StartCoroutine("FlipCD");
-        }
-    }
-
-    IEnumerator FlipCD()
-    {
-        yield return new WaitForSeconds(1.0f);
-        flipcd = false; 
-    }
-
-    
 
 }
