@@ -8,6 +8,7 @@ public class MovingFire : MonoBehaviour
 
     private GameObject[] WaypointsArray = new GameObject[5];
 
+    [SerializeField]
     private int speed = 10;
     private Vector3 nextPoint;
     private int index = 0;
