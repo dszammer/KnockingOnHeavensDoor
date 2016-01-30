@@ -10,6 +10,9 @@ public class MonsterSpawner : MonoBehaviour {
     [SerializeField]
     private Text [] _keyTexts;
 
+    [SerializeField]
+    GameObject _startPoint;
+
     private string [][] _monsterKeys;
     private bool [][] _monsterKeysPressed;
     
@@ -108,6 +111,7 @@ public class MonsterSpawner : MonoBehaviour {
                 
                 DeleteKey(i);
                 Debug.Log("Monster " + i + " spawned");
+                GameObject monster = Instantiate(_monsterPrefabs[i], _startPoint.transform.position, Quaternion.identity) as GameObject;
                 for (int j = 0; j < 3; j++)
                 {
                     _monsterKeysPressed[i][j] = false;
