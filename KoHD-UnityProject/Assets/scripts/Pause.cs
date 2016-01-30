@@ -6,10 +6,12 @@ public class Pause : MonoBehaviour {
 
 
     private bool paused = false;
+
 	// Use this for initialization
 	void Start () {
-	
-	}
+
+        Time.timeScale = 1;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,7 +45,6 @@ public class Pause : MonoBehaviour {
         GameObject.Find("MonsterSpawner").GetComponent<MonsterSpawner>().enabled = false;
     }
 
-
     public void PlayButton()
     {
         Time.timeScale = 1;
@@ -58,5 +59,11 @@ public class Pause : MonoBehaviour {
 
 
         GameObject.Find("MonsterSpawner").GetComponent<MonsterSpawner>().enabled = true;
+    }
+
+
+    public void MenuButton(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
