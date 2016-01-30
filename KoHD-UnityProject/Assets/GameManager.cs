@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public Text timeText;
+	public Text lifeText;
 
 	public int monsterToWin = 100;
 	private int monstersInGoal = 0;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		levelTimePassed += Time.deltaTime;
 		timeText.text = "Time Left: " + Mathf.Round(levelTimeLimitSeconds - levelTimePassed) + "s";
+		lifeText.text = "Heaven Gate: " + Mathf.Round(monsterToWin - monstersInGoal);
 		if (levelTimePassed >= levelTimeLimitSeconds) {
 			SceneManager.LoadScene ("loseScreen");
 		}
