@@ -13,6 +13,8 @@ public class MonsterSpawner : MonoBehaviour {
 
     [SerializeField]
     private Text [] _keyTexts;
+    [SerializeField]
+    private Sprite[] _buttonSprites;
 
     [SerializeField]
     GameObject _startPoint;
