@@ -44,10 +44,8 @@ public class MonsterSpawner : MonoBehaviour {
     controllerMapping.Add("j", new InputThingy("a", "HorizontalDPad", false));
     controllerMapping.Add("k", new InputThingy("a", "VerticalDPad", true));
     controllerMapping.Add("l", new InputThingy("a", "VerticalDPad", false));
-    controllerMapping.Add("m", new InputThingy("a", "VerticalLeft", true));
-    controllerMapping.Add("n", new InputThingy("a", "HorizontalLeft", false));
-    controllerMapping.Add("o", new InputThingy("a", "VerticalRight", true));
-    controllerMapping.Add("p", new InputThingy("a", "HorizontalRight", false));
+    controllerMapping.Add("m", new InputThingy("a", "LeftStickClick"));
+    controllerMapping.Add("n", new InputThingy("a", "RightStickClick"));
     //combinations = new string[] { "abc", "khr", "wpo", "tzc", "jsi", "rok", "qmc", "hop", "rvx", "bkg", "vrt", "hai", "ula", "get", "kab", "dav", "joe", "ste", "sil" };
     //_combinuse = new bool[_numberofkeycombinations];
     /*_comids = new int[4];
