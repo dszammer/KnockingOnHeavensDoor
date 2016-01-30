@@ -13,6 +13,7 @@ public class Monster : MonoBehaviour {
     private GameObject[] WaypointsArray;
     private Animator anim;
     private bool moving = true;
+    private bool flipcd;
     // Use this for initialization
     void Start () {
 
@@ -89,8 +90,10 @@ public class Monster : MonoBehaviour {
     }
 
     public void Flipme()
-    {
+    {   
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
+
+    
 
 }
