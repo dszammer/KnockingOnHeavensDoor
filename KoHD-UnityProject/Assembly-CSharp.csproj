@@ -48,6 +48,7 @@
      <Compile Include="Assets\Monster.cs" />
      <Compile Include="Assets\MonsterHit.cs" />
      <Compile Include="Assets\scripts\MonsterSpawner.cs" />
+     <Compile Include="Assets\scripts\Tower.cs" />
      <Compile Include="Assets\scripts\WaypointManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
