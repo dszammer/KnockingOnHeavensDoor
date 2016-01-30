@@ -9,12 +9,23 @@ public class Tower : MonoBehaviour {
     [SerializeField]
     private float _firedelay = 1.0f;
 
+    [SerializeField]
+    private ParticleSystem ps;
+
     GameObject[] _targets;
     int _numberOfTargetsAquired = 5;
+
+
 
 	// Use this for initialization
 	void Start () {
         _targets = new GameObject[_numberOfTargetsAquired];
+
+        for (int i = 0; i < _numberOfTargetsAquired; i++)
+        {
+            _targets[i] = null;
+        }
+
         StartCoroutine("DealDamage");
 	}
 	
@@ -75,6 +86,7 @@ public class Tower : MonoBehaviour {
         {
             if (_targets[0] != null)
             {
+                ps.Play();
                 if (!_targets[0].GetComponent<Monster>().DealDamage(_damage))
                 {
                     RemoveTarget(0);
