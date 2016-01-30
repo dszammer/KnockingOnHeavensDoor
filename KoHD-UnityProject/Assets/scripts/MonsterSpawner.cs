@@ -3,12 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
-using UnityEngine.SceneManagement;
 
 public class MonsterSpawner : MonoBehaviour {
 
-  [SerializeField]
   ControllerInputManager controllerInputManager;
+
+    [SerializeField]
+    private ParticleSystem ps;
 
     [SerializeField]
     private GameObject[] _monsterPrefabs;
@@ -69,7 +70,9 @@ public class MonsterSpawner : MonoBehaviour {
     controllerMapping.Add("l", new InputThingy("a", "VerticalDPad", false));
     controllerMapping.Add("m", new InputThingy("a", "LeftStickClick"));
     controllerMapping.Add("n", new InputThingy("a", "RightStickClick"));
-   
+
+
+    ControllerInputManager controllerInputManager = new ControllerInputManager();
 
 
     /*_monster0keys = new string[4];
@@ -105,12 +108,10 @@ public class MonsterSpawner : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-#if UNITY_EDITOR
-    if (controllerInputManager.ButtonBackDown) {
-      Application.LoadLevel(Application.loadedLevel);
-    }
-#endif
-    foreach(InputThingy inth in controllerMapping.Values){
+
+//    if(controllerInputManager.)
+
+		foreach(InputThingy inth in controllerMapping.Values){
 			inth.Update ();
 		}
 		
@@ -133,7 +134,14 @@ public class MonsterSpawner : MonoBehaviour {
                 _monsterKeysPressed[i][2] = true;
                 
                 DeleteKey(i);
+<<<<<<< HEAD
         SpawnMonster(i);
+=======
+                Debug.Log("Monster " + i + " spawned");
+                ps.Stop();
+                ps.Play();
+                GameObject monster = Instantiate(_monsterPrefabs[i], _startPoint.transform.position, Quaternion.identity) as GameObject;
+>>>>>>> 596335db8625f115064b313ed8763895f116dbd9
                 for (int j = 0; j < 3; j++)
                 {
                     _monsterKeysPressed[i][j] = false;
