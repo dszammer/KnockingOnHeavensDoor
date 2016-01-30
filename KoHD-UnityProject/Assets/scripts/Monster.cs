@@ -44,7 +44,7 @@ public class Monster : MonoBehaviour {
 
     private IEnumerator KillOnAnimationEnd()
     {
-        yield return new WaitForSeconds(0.167f);
+        yield return new WaitForSeconds(1.25f);
         
         Destroy(gameObject);
     }
@@ -58,9 +58,9 @@ public class Monster : MonoBehaviour {
             {
                 moving = false;
                 anim.SetBool("MonsterDeath", true);
+                Debug.Log(anim.GetCurrentAnimatorClipInfo(0).Length);
                 
-                Debug.Log(gameObject.GetComponent<Animation>().GetClipCount());
-                //StartCoroutine(KillOnAnimationEnd());
+                StartCoroutine(KillOnAnimationEnd());
             }
             else
             {
