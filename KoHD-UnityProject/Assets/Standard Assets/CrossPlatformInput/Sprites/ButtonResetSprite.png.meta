@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: ca07459e81e62ea4eb64d18e44f69044
-timeCreated: 1454177160
-licenseType: Free
+guid: a94c9a7eb94ceec4a8d67a1890e22e51
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: ResetButton
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,13 +22,13 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 32
+  maxTextureSize: 256
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
