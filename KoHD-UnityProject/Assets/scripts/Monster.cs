@@ -99,13 +99,9 @@ public class Monster : MonoBehaviour {
         }
     }
 
-
     IEnumerator FlipCD()
     {
         yield return new WaitForSeconds(1.0f);
         flipcd = false; 
     }
-
-    
-
 }
