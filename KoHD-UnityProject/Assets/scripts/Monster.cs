@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour {
     private GameObject[] WaypointsArray;
     private Animator anim;
     private bool moving = true;
-    private bool flipcd;
+    private bool flipcd = false;
     // Use this for initialization
     void Start () {
 
@@ -91,7 +91,18 @@ public class Monster : MonoBehaviour {
 
     public void Flipme()
     {   
-        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        if (!flipcd)
+        {
+            flipcd = true;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            StartCoroutine("FlipCD");
+        }
+    }
+
+    IEnumerator FlipCD()
+    {
+        yield return new WaitForSeconds(1.0f);
+        flipcd = false; 
     }
 
     
