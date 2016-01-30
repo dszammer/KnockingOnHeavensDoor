@@ -17,6 +17,7 @@ public class FinalWaypoint : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+        Destroy(other.gameObject, 0.0f);
 		gm.MonsterFinished ();
 	}
 }
