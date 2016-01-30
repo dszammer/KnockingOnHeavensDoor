@@ -18,16 +18,16 @@ public class MonsterSpawner : MonoBehaviour {
     private Text [] _keyTexts;
     [SerializeField]
     private Sprite[] _buttonSprites;
-  [SerializeField]
-  private Image[] _sequenceButtonsNull;
-  [SerializeField]
-  private Image[] _sequenceButtonsOne;
-  [SerializeField]
-  private Image[] _sequenceButtonsTwo;
-  [SerializeField]
-  private Image[] _sequenceButtonsThree;
+    [SerializeField]
+    private Image[] _sequenceButtonsNull;
+    [SerializeField]
+    private Image[] _sequenceButtonsOne;
+    [SerializeField]
+    private Image[] _sequenceButtonsTwo;
+    [SerializeField]
+    private Image[] _sequenceButtonsThree;
 
-  private Image[][] _sequenceButtons;
+    private Image[][] _sequenceButtons;
 
   [SerializeField]
   private Image invisImage;
@@ -135,8 +135,7 @@ public class MonsterSpawner : MonoBehaviour {
                 
                 DeleteKey(i);
                 SpawnMonster(i);
-                ps.Stop();
-                ps.Play();
+                
                 for (int j = 0; j < 3; j++)
                 {
                     _monsterKeysPressed[i][j] = false;
@@ -183,17 +182,19 @@ public class MonsterSpawner : MonoBehaviour {
 
   void SpawnMonster(int id)
     {
-    GameObject monster = Instantiate(_monsterPrefabs[id], _startPoint.transform.position, Quaternion.identity) as GameObject;
-    ++spawnCounter;
-    counterText.text = "Spawned minions: " + spawnCounter.ToString();
-    Debug.Log("SpawnMonster " + id);
+        ps.Stop();
+        ps.Play();
+        GameObject monster = Instantiate(_monsterPrefabs[id], _startPoint.transform.position, Quaternion.identity) as GameObject;
+        ++spawnCounter;
+        counterText.text = "Spawned minions: " + spawnCounter.ToString();
+        Debug.Log("SpawnMonster " + id);
     }
 
     void DeleteKey(int id)
     {
         string txt = _keyTexts[id].text;
         bool one = false;
-    int j = 0;
+        int j = 0;
         string newtext = "";
         for (int i = 0; i < _keyTexts[id].text.Length; i++)
         {
@@ -225,7 +226,7 @@ public class MonsterSpawner : MonoBehaviour {
 
         for (int i = 0; i < _textLength; i++)
         {
-            _keyTexts[id].text += comb[i] + " ";
+            _keyTexts[id].text += System.Char.ToUpper(comb[i]) + " ";
             _sequenceButtons[id][i].enabled = true;
             _sequenceButtons[id][i].sprite = (Sprite)_buttonSprites.GetValue((int)comb[i] - 97 );
         }
