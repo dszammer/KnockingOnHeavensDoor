@@ -31,11 +31,17 @@ public class Tower : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        for(int i = 0; i < _numberOfTargetsAquired; i++)
+        if (other.gameObject != null)
         {
-            if (_targets[i].gameObject.GetInstanceID() == other.gameObject.GetInstanceID())
+            for (int i = 0; i < _numberOfTargetsAquired; i++)
             {
-                RemoveTarget(i);
+                if (_targets[i] != null)
+                {
+                    if (_targets[i].gameObject.GetInstanceID() == other.gameObject.GetInstanceID())
+                    {
+                        RemoveTarget(i);
+                    }
+                }
             }
         }
     }
