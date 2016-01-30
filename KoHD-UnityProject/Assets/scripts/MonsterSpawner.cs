@@ -134,12 +134,9 @@ public class MonsterSpawner : MonoBehaviour {
                 _monsterKeysPressed[i][2] = true;
                 
                 DeleteKey(i);
-
-                Debug.Log("Monster " + i + " spawned");
+                SpawnMonster(i);
                 ps.Stop();
                 ps.Play();
-                GameObject monster = Instantiate(_monsterPrefabs[i], _startPoint.transform.position, Quaternion.identity) as GameObject;
-
                 for (int j = 0; j < 3; j++)
                 {
                     _monsterKeysPressed[i][j] = false;
@@ -229,7 +226,7 @@ public class MonsterSpawner : MonoBehaviour {
         for (int i = 0; i < _textLength; i++)
         {
             _keyTexts[id].text += comb[i] + " ";
-      _sequenceButtons[id][i].enabled = true;
+            _sequenceButtons[id][i].enabled = true;
             _sequenceButtons[id][i].sprite = (Sprite)_buttonSprites.GetValue((int)comb[i] - 97 );
         }
     }
