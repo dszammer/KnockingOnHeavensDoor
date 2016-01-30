@@ -225,8 +225,7 @@ public class MonsterSpawner : MonoBehaviour {
 
         for (int i = 0; i < _textLength; i++)
         {
-      _keyTexts[id].text += comb[i];
-      _keyTexts[id+1].text += " ";
+            _keyTexts[id].text += comb[i] + " ";
             _sequenceButtons[id][i].enabled = true;
             _sequenceButtons[id][i].sprite = (Sprite)_buttonSprites.GetValue((int)comb[i] - 97 );
         }
