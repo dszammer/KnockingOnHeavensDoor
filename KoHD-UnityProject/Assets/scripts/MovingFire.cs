@@ -58,7 +58,7 @@ public class MovingFire : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Coll");
+       // Debug.Log("Coll");
         if(other.gameObject.Equals(GameObject.Find("Waypoint")) && loop)
         {
             moving = false;
