@@ -100,11 +100,12 @@ public class MonsterSpawner : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+#if UNITY_EDITOR
     if (controllerInputManager.ButtonBackDown) {
       Application.LoadLevel(Application.loadedLevel);
     }
-		foreach(InputThingy inth in controllerMapping.Values){
+#endif
+    foreach(InputThingy inth in controllerMapping.Values){
 			inth.Update ();
 		}
 		
