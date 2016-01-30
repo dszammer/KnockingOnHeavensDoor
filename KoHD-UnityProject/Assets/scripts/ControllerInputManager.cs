@@ -56,6 +56,10 @@ public class ControllerInputManager : MonoBehaviour {
   public float ValueButtonLT { get { return valueButtonLT; } }
   private float valueButtonRT;
   public float ValueButtonRT { get { return valueButtonRT; } }
+  private bool buttonStartDown;
+  public bool ButtonStartDown { get { return buttonStartDown; } }
+  private bool buttonBackDown;
+  public bool ButtonBackDown { get { return buttonBackDown; } }
   private float leftStickVerticalValue;
   private float leftStickHorizontalValue;
   private float rightStickVerticalValue;
@@ -97,6 +101,8 @@ public class ControllerInputManager : MonoBehaviour {
     buttonDownY = Input.GetButtonDown("ButtonY");
     buttonDownLB = Input.GetButtonDown("ButtonLB");
     buttonDownRB = Input.GetButtonDown("ButtonRB");
+    buttonStartDown = Input.GetButtonDown("ButtonStart");
+    buttonBackDown = Input.GetButtonDown("ButtonBack");
     rightStickClick = Input.GetButtonDown("RightStickClick");
     leftStickClick = Input.GetButtonDown("LeftStickClick");
 

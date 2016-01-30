@@ -6,7 +6,7 @@ using System;
 
 public class MonsterSpawner : MonoBehaviour {
 
-  
+  ControllerInputManager controllerInputManager;
 
     [SerializeField]
     private GameObject[] _monsterPrefabs;
@@ -62,14 +62,9 @@ public class MonsterSpawner : MonoBehaviour {
     controllerMapping.Add("l", new InputThingy("a", "VerticalDPad", false));
     controllerMapping.Add("m", new InputThingy("a", "LeftStickClick"));
     controllerMapping.Add("n", new InputThingy("a", "RightStickClick"));
-    //combinations = new string[] { "abc", "khr", "wpo", "tzc", "jsi", "rok", "qmc", "hop", "rvx", "bkg", "vrt", "hai", "ula", "get", "kab", "dav", "joe", "ste", "sil" };
-    //_combinuse = new bool[_numberofkeycombinations];
-    /*_comids = new int[4];
 
-    for (int i = 0; i<_numberofkeycombinations; i++)
-    {
-        _combinuse[i] = false;
-    }*/
+
+    ControllerInputManager controllerInputManager = new ControllerInputManager();
 
 
     /*_monster0keys = new string[4];
@@ -105,6 +100,8 @@ public class MonsterSpawner : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+//    if(controllerInputManager.)
 
 		foreach(InputThingy inth in controllerMapping.Values){
 			inth.Update ();
