@@ -31,7 +31,10 @@ public class MonsterSpawner : MonoBehaviour {
   [SerializeField]
   private Image invisImage;
 
+  [SerializeField]
+  private Text counterText;
 
+  public int spawnCounter;
   [SerializeField]
     GameObject _startPoint;
 
@@ -49,6 +52,8 @@ public class MonsterSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+    spawnCounter = 0;
+    counterText.text = "Spawned Minions: 0";
     controllerMapping = new Dictionary<string, InputThingy>();
     controllerMapping.Add("a", new InputThingy("a","ButtonA"));
     controllerMapping.Add("b", new InputThingy("a", "ButtonB"));
@@ -128,8 +133,7 @@ public class MonsterSpawner : MonoBehaviour {
                 _monsterKeysPressed[i][2] = true;
                 
                 DeleteKey(i);
-                Debug.Log("Monster " + i + " spawned");
-                GameObject monster = Instantiate(_monsterPrefabs[i], _startPoint.transform.position, Quaternion.identity) as GameObject;
+        SpawnMonster(i);
                 for (int j = 0; j < 3; j++)
                 {
                     _monsterKeysPressed[i][j] = false;
@@ -176,7 +180,10 @@ public class MonsterSpawner : MonoBehaviour {
 
   void SpawnMonster(int id)
     {
-        Debug.Log("SpawnMonster " + id);
+    GameObject monster = Instantiate(_monsterPrefabs[id], _startPoint.transform.position, Quaternion.identity) as GameObject;
+    ++spawnCounter;
+    counterText.text = "Spawned minions: " + spawnCounter.ToString();
+    Debug.Log("SpawnMonster " + id);
     }
 
     void DeleteKey(int id)
