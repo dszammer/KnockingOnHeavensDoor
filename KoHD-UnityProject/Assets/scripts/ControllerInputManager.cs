@@ -4,22 +4,22 @@ using System.Collections;
 
 public class ControllerInputManager : MonoBehaviour {
 
-  private bool buttonDownA; //0
-  public bool ButtonDownA { get { return buttonDownA; } }
-  private bool buttonDownB; //1
-  public bool ButtonDownB { get { return buttonDownB; } }
-  private bool buttonDownX; //2
-  public bool ButtonDownX { get { return buttonDownX; } }
-  private bool buttonDownY; //3
-  public bool ButtonDownY { get { return buttonDownY; } }
-  private bool buttonDownLB; //4
-  public bool ButtonDownLB { get { return buttonDownLB; } }
-  private bool buttonDownLT;
-  public bool ButtonDownLT { get { return buttonDownLT; } }
-  private bool buttonDownRB; //5
-  public bool ButtonDownRB { get { return buttonDownRB; } }
-  private bool buttonDownRT;
-  public bool ButtonDownRT { get { return buttonDownRT; } }
+  private bool buttonDownA; //a
+  public String ButtonDownA { get { if (buttonDownA) return "a"; else return ""; } }
+  private bool buttonDownB; //b
+  public String ButtonDownB { get { if (buttonDownB) return "b"; else return ""; } }
+  private bool buttonDownX; //c
+  public String ButtonDownX { get { if (buttonDownX) return "c"; else return ""; } }
+  private bool buttonDownY; //d
+  public String ButtonDownY { get { if (buttonDownY) return "d"; else return ""; } }
+  private bool buttonDownLB; //e
+  public String ButtonDownLB { get { if (buttonDownLB) return "e"; else return ""; } }
+  private bool buttonDownLT; //f
+  public String ButtonDownLT { get { if (buttonDownLT) return "f"; else return ""; } }
+  private bool buttonDownRB; //g
+  public String ButtonDownRB { get { if (buttonDownRB) return "g"; else return ""; } }
+  private bool buttonDownRT; //h
+  public String ButtonDownRT { get { if (buttonDownRT) return "h"; else return ""; } }
   private bool leftVerticalUp;
   public bool LeftVerticalUp { get { return leftVerticalUp; } }
   private bool rightVerticalUp;
@@ -36,18 +36,18 @@ public class ControllerInputManager : MonoBehaviour {
   public bool RightHorizontalLeft { get { return rightHorizontalLeft; } }
   private bool rightHorizontalRight;
   public bool RightHorizontalRight { get { return rightHorizontalRight; } }
-  private bool dPadUp;
-  public bool DPadUp { get { return dPadUp; } }
-  private bool dPadDown;
-  public bool DPadDown { get { return dPadDown; } }
-  private bool dPadLeft;
-  public bool DPadLeft { get { return dPadLeft; } }
-  private bool dPadRight;
-  public bool DPadRight { get { return dPadRight; } }
-  private bool leftStickClick;
-  public bool LeftStickClick { get { return leftStickClick; } }
-  private bool rightStickClick;
-  public bool RightStickClick{ get { return rightStickClick; } }
+  private bool dPadUp; //i
+  public String DPadUp { get { if (dPadUp) return "i"; else return ""; } }
+  private bool dPadDown; //j
+  public String DPadDown { get { if (dPadDown) return "j"; else return ""; } }
+  private bool dPadLeft; //k
+  public String DPadLeft { get { if (dPadLeft) return "k"; else return ""; } }
+  private bool dPadRight; //l
+  public String DPadrigh { get { if (dPadRight) return "l"; else return ""; } }
+  private bool leftStickClick; //m
+  public String LeftStickClick { get { if (leftStickClick) return "m"; else return ""; } }
+  private bool rightStickClick; //n
+  public String RightStickClick { get { if (leftStickClick) return "n"; else return ""; } }
   private float leftStickAngle;
   public float LeftStickAngle { get { return leftStickAngle; } }
   private float rightStickAngle;
