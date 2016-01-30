@@ -13,6 +13,8 @@ public class MonsterSpawner : MonoBehaviour {
 
     [SerializeField]
     private Text [] _keyTexts;
+    [SerializeField]
+    private Sprite[] _buttonSprites;
 
     [SerializeField]
     GameObject _startPoint;
@@ -85,30 +87,10 @@ public class MonsterSpawner : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-
-        /* if (Input.GetKey(_monster0keys[0]) && Input.GetKey(_monster0keys[1]) && Input.GetKey(_monster0keys[2]))
-         {
-             SpawnMonster(0);
-             SetKeys(0);
-         }
-         if (Input.GetKey(_monster1keys[0]) && Input.GetKey(_monster1keys[1]) && Input.GetKey(_monster1keys[2]))
-         {
-             SpawnMonster(1);
-             SetKeys(1);
-         }
-         if (Input.GetKey(_monster2keys[0]) && Input.GetKey(_monster2keys[1]) && Input.GetKey(_monster2keys[2]))
-         {
-             SpawnMonster(2);
-             SetKeys(2);
-         }
-         if (Input.GetKey(_monster3keys[0]) && Input.GetKey(_monster3keys[1]) && Input.GetKey(_monster3keys[2]))
-         {
-             SpawnMonster(3);
-             SetKeys(3);
-         }*/
-
-
-
+		foreach(InputThingy inth in controllerMapping.Values){
+			inth.Update ();
+		}
+		
         for (int i = 0; i < 4; i++)
         {
             if (CheckControllerInput(_monsterKeys[i][0]) && !_monsterKeysPressed[i][0])
@@ -137,7 +119,7 @@ public class MonsterSpawner : MonoBehaviour {
                 SetKeys(i);
                 //success!
             }
-            else if (Input.anyKeyDown)
+			else if (Input.anyKeyDown || anyAxisDown())
             {
                 //reset
                 for (int j = 0; j < 3; j++)
@@ -149,6 +131,17 @@ public class MonsterSpawner : MonoBehaviour {
             }
         }        
     }
+
+	private bool anyAxisDown(){
+		foreach (InputThingy inth in controllerMapping.Values) {
+			if (inth.isAxis ()) {
+				if (inth.isPressed ()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
   private bool CheckControllerInput(string monsterKeyCode) {
     if (Input.GetKeyDown(monsterKeyCode)) {
