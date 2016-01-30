@@ -22,4 +22,18 @@ public class Menu : MonoBehaviour {
     {
         Application.Quit();
     }
+    public void CreditsButton()
+    {
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        GetComponent<CanvasGroup>().alpha = 0;
+        GameObject.Find("CreditsCanvas").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        GameObject.Find("CreditsCanvas").GetComponent<CanvasGroup>().alpha = 1;
+    }
+    public void ReturnButton()
+    {
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        GetComponent<CanvasGroup>().alpha = 0;
+        GameObject.Find("MenuCanvas").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        GameObject.Find("MenuCanvas").GetComponent<CanvasGroup>().alpha = 1;
+    }
 }
