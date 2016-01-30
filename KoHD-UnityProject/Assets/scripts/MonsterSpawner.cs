@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System;
 
 public class MonsterSpawner : MonoBehaviour {
+
+  
 
     [SerializeField]
     private GameObject[] _monsterPrefabs;
@@ -15,7 +19,8 @@ public class MonsterSpawner : MonoBehaviour {
 
     private string [][] _monsterKeys;
     private bool [][] _monsterKeysPressed;
-    
+
+  private Dictionary<string, InputThingy> controllerMapping;
 
     private int _textLength = 3;
         
@@ -26,24 +31,39 @@ public class MonsterSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+    controllerMapping = new Dictionary<string, InputThingy>();
+    controllerMapping.Add("a", new InputThingy("a","ButtonA"));
+    controllerMapping.Add("b", new InputThingy("a", "ButtonB"));
+    controllerMapping.Add("c", new InputThingy("a", "ButtonX"));
+    controllerMapping.Add("d", new InputThingy("a", "ButtonY"));
+    controllerMapping.Add("e", new InputThingy("a", "ButtonLB"));
+    controllerMapping.Add("f", new InputThingy("a", "ButtonLT", true));
+    controllerMapping.Add("g", new InputThingy("a", "ButtonRB"));
+    controllerMapping.Add("h", new InputThingy("a", "ButtonRT", true));
+    controllerMapping.Add("i", new InputThingy("a", "HorizontalDPad", true));
+    controllerMapping.Add("j", new InputThingy("a", "HorizontalDPad", false));
+    controllerMapping.Add("k", new InputThingy("a", "VerticalDPad", true));
+    controllerMapping.Add("l", new InputThingy("a", "VerticalDPad", false));
+    controllerMapping.Add("m", new InputThingy("a", "VerticalLeft", true));
+    controllerMapping.Add("n", new InputThingy("a", "HorizontalLeft", false));
+    controllerMapping.Add("o", new InputThingy("a", "VerticalRight", true));
+    controllerMapping.Add("p", new InputThingy("a", "HorizontalRight", false));
+    //combinations = new string[] { "abc", "khr", "wpo", "tzc", "jsi", "rok", "qmc", "hop", "rvx", "bkg", "vrt", "hai", "ula", "get", "kab", "dav", "joe", "ste", "sil" };
+    //_combinuse = new bool[_numberofkeycombinations];
+    /*_comids = new int[4];
 
-        //combinations = new string[] { "abc", "khr", "wpo", "tzc", "jsi", "rok", "qmc", "hop", "rvx", "bkg", "vrt", "hai", "ula", "get", "kab", "dav", "joe", "ste", "sil" };
-        //_combinuse = new bool[_numberofkeycombinations];
-        /*_comids = new int[4];
-
-        for (int i = 0; i<_numberofkeycombinations; i++)
-        {
-            _combinuse[i] = false;
-        }*/
+    for (int i = 0; i<_numberofkeycombinations; i++)
+    {
+        _combinuse[i] = false;
+    }*/
 
 
+    /*_monster0keys = new string[4];
+    _monster1keys = new string[4];
+    _monster2keys = new string[4];
+    _monster3keys = new string[4];*/
 
-        /*_monster0keys = new string[4];
-        _monster1keys = new string[4];
-        _monster2keys = new string[4];
-        _monster3keys = new string[4];*/
-
-        _monsterKeys = new string[4][];
+    _monsterKeys = new string[4][];
 
         for (int i = 0; i < 4; i++)
         {
@@ -93,19 +113,19 @@ public class MonsterSpawner : MonoBehaviour {
 
         for (int i = 0; i < 4; i++)
         {
-            if (Input.GetKeyDown(_monsterKeys[i][0]) && !_monsterKeysPressed[i][0])
+            if (CheckControllerInput(_monsterKeys[i][0]) && !_monsterKeysPressed[i][0])
             {
                 _monsterKeysPressed[i][0] = true;
                 
                 DeleteKey(i);
             }
-            else if (_monsterKeysPressed[i][0] && !_monsterKeysPressed[i][1] && Input.GetKeyDown(_monsterKeys[i][1]))
+            else if (_monsterKeysPressed[i][0] && !_monsterKeysPressed[i][1] && (CheckControllerInput(_monsterKeys[i][1])))
             {
                 _monsterKeysPressed[i][1] = true;
                
                 DeleteKey(i);
             }
-            else if ((_monsterKeysPressed[i][1] && !_monsterKeysPressed[i][2] && Input.GetKeyDown(_monsterKeys[i][2])))
+            else if (_monsterKeysPressed[i][1] && !_monsterKeysPressed[i][2] && (CheckControllerInput(_monsterKeys[i][2])))
             {
                 _monsterKeysPressed[i][2] = true;
                 
@@ -132,7 +152,20 @@ public class MonsterSpawner : MonoBehaviour {
         }        
     }
 
-    void SpawnMonster(int id)
+  private bool CheckControllerInput(string monsterKeyCode) {
+    if (Input.GetKeyDown(monsterKeyCode)) {
+      return true;
+    } else {
+      foreach(string code in controllerMapping.Keys){
+        if (code.Equals(monsterKeyCode)) {
+          return controllerMapping[code].isDown();
+        }
+      }
+    }
+    return false;
+  }
+
+  void SpawnMonster(int id)
     {
         Debug.Log("SpawnMonster " + id);
     }
@@ -194,11 +227,11 @@ public class MonsterSpawner : MonoBehaviour {
 
         while (i < 3)
         {
-            rnd = (int)(Random.value * 26) + 97;
+            rnd = (int)(UnityEngine.Random.value * 14) + 97;
             fail = false;
             for(int j = 0; j < _textLength; j++)
             {
-                if((keysInUse[j] == System.Convert.ToChar(rnd)) || rnd < 97 || rnd > 122)
+                if((keysInUse[j] == System.Convert.ToChar(rnd)) || rnd < 97 || rnd > 110)
                 {
                     fail = true;
                 } 
