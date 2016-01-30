@@ -62,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Monster.cs" />
+    <Compile Include="Assets\scripts\Menu.cs" />
+    <Compile Include="Assets\scripts\Monster.cs" />
+    <Compile Include="Assets\scripts\MonsterHit.cs" />
     <Compile Include="Assets\scripts\MonsterSpawner.cs" />
     <Compile Include="Assets\scripts\WaypointManager.cs" />
   </ItemGroup>
