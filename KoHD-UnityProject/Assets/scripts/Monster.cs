@@ -104,4 +104,5 @@ public class Monster : MonoBehaviour {
         yield return new WaitForSeconds(1.0f);
         flipcd = false; 
     }
+
 }
