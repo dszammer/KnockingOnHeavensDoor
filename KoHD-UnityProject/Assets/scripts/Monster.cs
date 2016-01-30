@@ -8,7 +8,8 @@ public class Monster : MonoBehaviour {
     private int health = 1000;
     [SerializeField]
     private float speed = 0.5f;
-
+    [SerializeField]
+    private AudioClip deathClip;
     private Transform nextWaypoint;
     private GameObject[] WaypointsArray;
     private Animator anim;
@@ -45,6 +46,8 @@ public class Monster : MonoBehaviour {
 
     private IEnumerator KillOnAnimationEnd()
     {
+        GetComponent<AudioSource>().clip = deathClip;
+        GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(1.25f);
         
         Destroy(gameObject);
