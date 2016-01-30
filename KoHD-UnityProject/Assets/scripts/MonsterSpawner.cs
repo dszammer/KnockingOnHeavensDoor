@@ -15,8 +15,22 @@ public class MonsterSpawner : MonoBehaviour {
     private Text [] _keyTexts;
     [SerializeField]
     private Sprite[] _buttonSprites;
+  [SerializeField]
+  private Image[] _sequenceButtonsNull;
+  [SerializeField]
+  private Image[] _sequenceButtonsOne;
+  [SerializeField]
+  private Image[] _sequenceButtonsTwo;
+  [SerializeField]
+  private Image[] _sequenceButtonsThree;
 
-    [SerializeField]
+  private Image[][] _sequenceButtons;
+
+  [SerializeField]
+  private Image invisImage;
+
+
+  [SerializeField]
     GameObject _startPoint;
 
     private string [][] _monsterKeys;
@@ -62,6 +76,11 @@ public class MonsterSpawner : MonoBehaviour {
     _monster1keys = new string[4];
     _monster2keys = new string[4];
     _monster3keys = new string[4];*/
+    _sequenceButtons = new Image[4][];
+    _sequenceButtons[0] = _sequenceButtonsNull;
+    _sequenceButtons[1] = _sequenceButtonsOne;
+    _sequenceButtons[2] = _sequenceButtonsTwo;
+    _sequenceButtons[3] = _sequenceButtonsThree;
 
     _monsterKeys = new string[4][];
 
@@ -165,13 +184,21 @@ public class MonsterSpawner : MonoBehaviour {
     {
         string txt = _keyTexts[id].text;
         bool one = false;
+    int j = 0;
         string newtext = "";
-
         for (int i = 0; i < _keyTexts[id].text.Length; i++)
         {
             if ((txt[i] != ' ' && !one))
             {
-                newtext += ' ';
+        if (i == 1) {
+          j = 0;
+        } else if (i == 3) {
+          j = 1;
+        } else if (i == 5) {
+          j = 2;
+        }
+        _sequenceButtons[id][j].enabled = false;
+        newtext += ' ';
                 one = true;
             } 
             else
@@ -180,6 +207,7 @@ public class MonsterSpawner : MonoBehaviour {
             }
         }
         _keyTexts[id].text = newtext;
+        
     }
 
     void SetText(string comb, int id)
@@ -189,6 +217,8 @@ public class MonsterSpawner : MonoBehaviour {
         for (int i = 0; i < _textLength; i++)
         {
             _keyTexts[id].text += comb[i] + " ";
+      _sequenceButtons[id][i].enabled = true;
+            _sequenceButtons[id][i].sprite = (Sprite)_buttonSprites.GetValue((int)comb[i] - 97 );
         }
     }
 
