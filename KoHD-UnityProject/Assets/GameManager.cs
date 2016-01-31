@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using EZCameraShake;
 
 public class GameManager : MonoBehaviour {
 
@@ -16,7 +17,8 @@ public class GameManager : MonoBehaviour {
 
 	public void MonsterFinished(){
 		monstersInGoal++;
-		if (monstersInGoal >= monsterToWin) {
+    CameraShakeInstance c = CameraShaker.Instance.ShakeOnce(1.5f, 1.5f, 0.5f, 0.5f);
+    if (monstersInGoal >= monsterToWin) {
 			SceneManager.LoadScene ("winScreen");
 		}
 	}

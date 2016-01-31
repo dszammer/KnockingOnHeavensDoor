@@ -14,7 +14,7 @@ public class Tower : MonoBehaviour {
     [SerializeField]
     private ParticleSystem ps;
 
-    
+    private AudioSource audio;
 
     GameObject[] _targets;
     int _numberOfTargetsAquired = 5;
@@ -23,6 +23,7 @@ public class Tower : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        audio = GetComponent<AudioSource>();
         _targets = new GameObject[_numberOfTargetsAquired];
 
         for (int i = 0; i < _numberOfTargetsAquired; i++)
@@ -104,6 +105,8 @@ public class Tower : MonoBehaviour {
             if (_targets[0] != null)
             {
                 ps.Play();
+                audio.Stop();
+                audio.Play();
                 if (!_targets[0].GetComponent<Monster>().DealDamage(_damage))
                 {
                     RemoveTarget(0);
