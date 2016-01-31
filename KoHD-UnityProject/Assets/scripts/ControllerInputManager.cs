@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using EZCameraShake;
 
 public class ControllerInputManager : MonoBehaviour {
 
@@ -68,7 +69,9 @@ public class ControllerInputManager : MonoBehaviour {
   private float dpadVertical;
 
   public void Update() {
-    if(Input.GetButtonDown("ButtonA") == true) {
+
+
+    if (Input.GetButtonDown("ButtonA") == true) {
       Debug.Log("ButtonA");
     } else if (Input.GetButtonDown("ButtonB") == true) {
       Debug.Log("ButtonB");
