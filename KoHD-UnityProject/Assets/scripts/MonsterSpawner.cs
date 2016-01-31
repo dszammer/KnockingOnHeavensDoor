@@ -10,7 +10,7 @@ public class MonsterSpawner : MonoBehaviour {
   ControllerInputManager controllerInputManager;
 
     [SerializeField]
-    private ParticleSystem ps;
+    private GameObject spawnParticles;
 
     [SerializeField]
     private GameObject[] _monsterPrefabs;
@@ -179,8 +179,7 @@ public class MonsterSpawner : MonoBehaviour {
 
   void SpawnMonster(int id)
     {
-        ps.Stop();
-        ps.Play();
+        GameObject particle = Instantiate(spawnParticles, _startPoint.transform.position, Quaternion.identity) as GameObject;
         GameObject monster = Instantiate(_monsterPrefabs[id], _startPoint.transform.position, Quaternion.identity) as GameObject;
         ++spawnCounter;
         counterText.text = "Spawned minions: " + spawnCounter.ToString();
