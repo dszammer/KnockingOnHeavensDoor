@@ -8,9 +8,13 @@ public class Tower : MonoBehaviour {
 
     [SerializeField]
     private float _firedelay = 1.0f;
+    [SerializeField]
+    private bool _rotateToTarget = false;
 
     [SerializeField]
     private ParticleSystem ps;
+
+    
 
     GameObject[] _targets;
     int _numberOfTargetsAquired = 5;
@@ -28,7 +32,20 @@ public class Tower : MonoBehaviour {
 
         StartCoroutine("DealDamage");
 	}
-	
+
+    void Update()
+    {
+        if (_targets[0] != null && _rotateToTarget)
+        {
+            Vector3 moveDirection = ps.transform.position - _targets[0].transform.position;
+            if (moveDirection != Vector3.zero)
+            {
+                float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+                ps.transform.rotation = Quaternion.AngleAxis(angle, new Vector3(1,0,0));
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
        for (int i = 0; i < _numberOfTargetsAquired; i++)
