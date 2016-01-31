@@ -48,7 +48,7 @@ public class Monster : MonoBehaviour {
     {
         GetComponent<AudioSource>().clip = deathClip;
         GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(1f);
         
         Destroy(gameObject);
     }
