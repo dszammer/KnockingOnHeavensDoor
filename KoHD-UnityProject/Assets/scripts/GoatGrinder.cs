@@ -9,7 +9,7 @@ public class GoatGrinder : MonoBehaviour {
 
 	private float[] mainAngles = { 0, 90, 180, 90 };
 	private float angleAccuracy = 10;
-	private float currentAngleIndex = -1;
+	private int currentAngleIndex = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +37,7 @@ public class GoatGrinder : MonoBehaviour {
 	void Update () {
 		CalculateAngle ();
 		if (currentAngleIndex == -1) {
-			for (int i; i < mainAngles.Length; i++) {
+			for (int i = 0; i < mainAngles.Length; i++) {
 				if (checkForBlood(i)) {
 					break;
 				}
@@ -51,12 +51,14 @@ public class GoatGrinder : MonoBehaviour {
 			if (nextAngle > mainAngles.Length - 1) {
 				nextAngle = 0;
 			}
+			checkForBlood (previousAngle);
+			checkForBlood (nextAngle);
 		}
 	}
 
 	bool checkForBlood(int index){
-		if (System.Math.Abs (leftStickAngle - mainAngles [i]) < angleAccuracy) {
-			currentAngleIndex = i;
+		if (System.Math.Abs (leftStickAngle - mainAngles [index]) < angleAccuracy) {
+			currentAngleIndex = index;
 			generateBlood ();
 			return true;
 		}
