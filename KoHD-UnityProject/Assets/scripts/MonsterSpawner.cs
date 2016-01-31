@@ -6,6 +6,7 @@ using System;
 
 public class MonsterSpawner : MonoBehaviour {
 
+  [SerializeField]
   ControllerInputManager controllerInputManager;
 
     [SerializeField]
@@ -70,10 +71,6 @@ public class MonsterSpawner : MonoBehaviour {
     controllerMapping.Add("l", new InputThingy("a", "VerticalDPad", false));
     controllerMapping.Add("m", new InputThingy("a", "LeftStickClick"));
     controllerMapping.Add("n", new InputThingy("a", "RightStickClick"));
-
-
-    ControllerInputManager controllerInputManager = new ControllerInputManager();
-
 
     /*_monster0keys = new string[4];
     _monster1keys = new string[4];
